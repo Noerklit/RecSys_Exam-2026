@@ -1,0 +1,28 @@
+services:
+  my_recsys:
+    build:
+      context: ./recommender_model
+      dockerfile: Dockerfile
+    volumes:
+      - ./recommender_model/models:/models
+    ports:
+      - "5000:5000"
+
+  my_feedbackcollector:
+    build:
+      context: ./feedback_collector
+      dockerfile: Dockerfile
+    volumes:
+      - ./feedback_collector/data:/data
+    ports:
+      - "5001:5000" # Maps container port 5000 to host port 5001
+
+  simulator:
+    build:
+      context: ./user_activity_emulator
+      dockerfile: Dockerfile
+    ports:
+      - "5002:5000" # UI access on port 5002
+    depends_on:
+      - my_recsys
+      - my_feedbackcollector
