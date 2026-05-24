@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: recsys-configmap
+data:
+  recommender_app_url: recommender-app-service
+  feedback_collector_url: feedback-collector-service

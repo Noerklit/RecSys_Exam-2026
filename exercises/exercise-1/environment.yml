@@ -1,0 +1,14 @@
+name: recsys_exercise_1
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.12
+  - pandas
+  - scikit-surprise
+  - flask
+  - requests
+  - numpy=1.26.4
+  - pip  # Tells conda to install pip
+  - pip:
+    - "elasticsearch>=8.15.0,<9.0.0"

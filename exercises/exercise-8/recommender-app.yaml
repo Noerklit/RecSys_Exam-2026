@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: recommender-app
+  labels:
+    app: recommender-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: recommender-app
+  template:
+    metadata:
+      labels:
+        app: recommender-app
+    spec:
+      containers:
+        - name: recommender-app-container
+          image: noerklit/recommender_app
+          ports:
+            - containerPort: 5000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: recommender-app-service
+spec:
+  selector:
+    app: recommender-app
+  ports:
+    - protocol: TCP
+      port: 5000
+      targetPort: 5000

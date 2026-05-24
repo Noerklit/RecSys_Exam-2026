@@ -7,8 +7,6 @@ app = Flask(__name__)
 log = logging.getLogger('werkzeug')
 log.setLevel(logging.ERROR)
 
-
-# IMPORTANT: Use the absolute path as discussed for Docker
 model_path = '/models/model_SVD.pkl'
 _, algo = dump.load(model_path)
 

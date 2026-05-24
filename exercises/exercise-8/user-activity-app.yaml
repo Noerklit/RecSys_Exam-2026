@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-activity-app
+  labels:
+    app: user-activity-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: user-activity-app
+  template:
+    metadata:
+      labels:
+        app: user-activity-app
+    spec:
+      containers:
+        - name: user-activity-app-container
+          image: noerklit/user_activity_app
+          ports:
+          - containerPort: 5000
+          env:
+          - name: recommender-app-url
+            valueFrom: 
+              configMapKeyRef:
+                name: recsys-configmap
+                key: recommender_app_url
+          - name: feedback-collector-url
+            valueFrom: 
+              configMapKeyRef:
+                name: recsys-configmap
+                key: feedback_collector_url
+      
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: user-activity-app-service
+spec:
+  selector:
+    app: user-activity-app
+  ports:
+    - protocol: TCP
+      port: 5000
+      targetPort: 5000

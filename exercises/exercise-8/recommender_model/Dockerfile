@@ -12,9 +12,10 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy source code
 COPY ./src ./src
+COPY ./models /models
 
 # Create mount points for external data/models
-RUN mkdir /data /models
+RUN mkdir /data
 
 # Switch to the source directory to run the app
 WORKDIR /app/src
