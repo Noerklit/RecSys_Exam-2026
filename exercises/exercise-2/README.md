@@ -6,5 +6,5 @@ conda env update -f environment.yml --prune
 
 To activate command in terminal:
 ```
-conda activate recsys_exercise_1
+conda activate recsys_exercise_2
 ```

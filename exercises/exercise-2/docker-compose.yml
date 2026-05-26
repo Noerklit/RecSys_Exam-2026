@@ -3,7 +3,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: elasticsearch-exercise1
+    container_name: elasticsearch-exercise2
     environment:
       - discovery.type=single-node
       - bootstrap.memory_lock=true
