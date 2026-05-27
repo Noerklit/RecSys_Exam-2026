@@ -1,0 +1,11 @@
+name: recsys_exercise_4
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.12
+  - pandas
+  - mlxtend
+  - pip  # Tells conda to install pip
+  - pip:
+      - apyori
