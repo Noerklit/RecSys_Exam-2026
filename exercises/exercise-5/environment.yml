@@ -1,0 +1,12 @@
+name: recsys_exercise_5
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.12
+  - pandas
+  - numpy 
+  - scipy
+  - pip  # Tells conda to install pip
+  - pip:
+      - scikit-surprise
